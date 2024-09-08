@@ -31,6 +31,8 @@ const addTask = async (req: Request, res: Response) => {
       .status(STATUS_CODES.CREATED)
       .json({ message: "Task created successfully", task: userTasks });
   } catch (error: any) {
+    console.log(error);
+    
     res
       .status(STATUS_CODES.INTERNAL_SERVER_ERROR)
       .json({ message: error.message });
@@ -58,6 +60,8 @@ const getAllTasks = async (req: Request, res: Response) => {
 
     res.status(STATUS_CODES.OK).json({ tasks: userTasks.tasks });
   } catch (error) {
+    console.log(error);
+
     res
       .status(STATUS_CODES.INTERNAL_SERVER_ERROR)
       .json({ message: "Internal server error" });
@@ -98,6 +102,8 @@ const updateTask = async (req: Request, res: Response) => {
       .status(STATUS_CODES.OK)
       .json({ message: "Task updated successfully", task });
   } catch (error: any) {
+    console.log(error);
+
     console.log(error)
     res
       .status(STATUS_CODES.INTERNAL_SERVER_ERROR)
@@ -174,6 +180,8 @@ const getTask = async (req: Request, res: Response) => {
 
     res.status(STATUS_CODES.OK).json({ task });
   } catch (error: any) {
+    console.log(error);
+
     res
       .status(STATUS_CODES.INTERNAL_SERVER_ERROR)
       .json({ message: error.message });
@@ -213,6 +221,8 @@ const updateStatus = async (req: Request, res: Response) => {
       .status(STATUS_CODES.OK)
       .json({ message: "Task status updated successfully", task });
   } catch (error: any) {
+    console.log(error);
+
     res
       .status(STATUS_CODES.INTERNAL_SERVER_ERROR)
       .json({ message: error.message });

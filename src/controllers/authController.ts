@@ -38,6 +38,8 @@ const register = async (req: Request, res: Response) => {
       .status(STATUS_CODES.CREATED)
       .json({ message: "User created successfully", user: newuser,token:token });
   } catch (error) {
+    console.log(error);
+
     res.status(STATUS_CODES.INTERNAL_SERVER_ERROR).json(error);
   }
 };
