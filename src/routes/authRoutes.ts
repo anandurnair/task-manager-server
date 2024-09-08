@@ -16,12 +16,11 @@ authRouter.get(
   passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
-// Callback route for Google to redirect to after authentication
 authRouter.get(
   '/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   (req: Request, res: Response) => {
-    const user = req.user as any; // Type assertion if you have a User type
+    const user = req.user as any; 
     const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET || "secretkey", { expiresIn: '1h' });
     res.status(200).json({ message: 'Google login successful', user, token });
   }
